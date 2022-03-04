@@ -126,12 +126,15 @@ class Ventanita:
         self.tree.heading("col1", text="Título")
         self.tree.heading("col2", text="Descripción")
         self.tree.grid(row=0, column=0, columnspan=4)
+<<<<<<< HEAD
         self.tree.bind(
             "<<TreeviewSelect>>",
             lambda event, a=self.tree, b=self.titulo, c=self.descripcion: self.objeto_base.item_elegido(
                 a, b, c
             ),
         )
+=======
+>>>>>>> bf276896fbc6234720c45429d24b38567b7abafa
 
     def alta(self):
         """Metodo que define el alta"""
@@ -143,7 +146,11 @@ class Ventanita:
     ):
         """Metodo que define el borrar."""
 
+<<<<<<< HEAD
         self.objeto_base.borrar(self.tit, self.des, self.tree)
+=======
+        self.objeto_base.borrar(self.tree)
+>>>>>>> bf276896fbc6234720c45429d24b38567b7abafa
 
     def modificar(
         self,
