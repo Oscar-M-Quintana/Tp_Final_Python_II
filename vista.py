@@ -5,21 +5,25 @@ from modelo import *
 from tktemas import temas
 
 
-
 class Ventanita:
+    """Clase que da inicio a la app."""
+
     def __init__(self, window):
         self.root = window
+        self.root.geometry("525x445+800+150")
         self.tit = StringVar()
         self.des = StringVar()
+
+        # ? no encuentro el uso de self.a
         self.a = IntVar()
         self.opcion = StringVar()
-        self.f = Frame(self.root)
-        self.tree = ttk.Treeview(self.f)
+        self.frame1 = Frame(self.root)
+        self.tree = ttk.Treeview(self.frame1)
         self.objeto_base = Abmc()
         # Frame
         self.root.title("Tarea Poo")
-        self.f.config(width=1020, height=1020)
-        self.f.grid(row=10, column=0, columnspan=4)
+        self.frame1.config(width=1020, height=1020)
+        self.frame1.grid(row=10, column=0, columnspan=4)
 
         # Etiquetas
         self.superior = Label(
@@ -121,24 +125,36 @@ class Ventanita:
         self.tree.heading("#0", text="ID")
         self.tree.heading("col1", text="Título")
         self.tree.heading("col2", text="Descripción")
-        self.tree.grid(row=10, column=0, columnspan=4)
+        self.tree.grid(row=0, column=0, columnspan=4)
+        self.tree.bind(
+            "<<TreeviewSelect>>",
+            lambda event, a=self.tree, b=self.titulo, c=self.descripcion: self.objeto_base.item_elegido(
+                a, b, c
+            ),
+        )
 
-    def alta(
-        self,
-    ):
+    def alta(self):
+        """Metodo que define el alta"""
+
         self.objeto_base.alta(self.tit, self.des, self.tree)
 
     def borrar(
         self,
     ):
-        self.objeto_base.borrar(self.tree)
+        """Metodo que define el borrar."""
+
+        self.objeto_base.borrar(self.tit, self.des, self.tree)
 
     def modificar(
         self,
     ):
+        """Metodo que define modificar."""
+
         self.objeto_base.modificar(self.tit, self.des, self.tree)
 
     def actualizar(
         self,
     ):
+        """Metodo que define la actualización."""
+
         self.objeto_base.actualizar_treeview(self.tree)
