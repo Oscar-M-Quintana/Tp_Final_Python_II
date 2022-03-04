@@ -17,12 +17,8 @@ class BaseModel(Model):
 
 class Noticia(BaseModel):
     """Clase que genera la tabla Noticias."""
-<<<<<<< HEAD
     
     # id = IntegerField(unique=True)
-=======
-
->>>>>>> bf276896fbc6234720c45429d24b38567b7abafa
     titulo = CharField(unique=True)
     descripcion = TextField()
 
@@ -77,17 +73,6 @@ class Abmc:
         noticia.descripcion = lista[1]
         noticia.save()
         elobjeto.mostrar()
-<<<<<<< HEAD
-=======
-
-    def borrar(variables, popupEliminar, elobjeto):
-        """Metodo para eliminar."""
-
-        popupEliminar.destroy()
-        lista = []
-        for variable in variables:
-            lista.append(variable.get())
->>>>>>> bf276896fbc6234720c45429d24b38567b7abafa
 
     def borrar(self, titulo, descripcion, mitreeview):
         """Metodo para eliminar."""
@@ -97,7 +82,6 @@ class Abmc:
         
         borrar = Noticia.get(Noticia.titulo == titulo.get())
         borrar.delete_instance()
-<<<<<<< HEAD
         
         self.actualizar_treeview(mitreeview)       
 
@@ -125,40 +109,6 @@ class Abmc:
             titulo.set(record[0])
             descripcion.set(record[1])
             
-=======
-
-        elobjeto.mostrar()
-
-    def modificar(self, titulo, descripcion, mitreeview):
-        """Metodo para modificar."""
-
-        item_seleccionado = mitreeview.focus()
-        valor_id = mitreeview.item(item_seleccionado)
-        con = self.conexion()
-
-        cursor = con.cursor()
-        sql = "UPDATE noticias SET (titulo, descripcion)=(?,?) WHERE id=?"
-        datos = (titulo.get(), descripcion.get(), valor_id["text"])
-        cursor.execute(sql, datos)
-        con.commit()
-        print(sql, datos)
-
-        self.actualizar_treeview(mitreeview)
-        ###
-
-        popupModificar.destroy()
-        lista = []
-        for variable in variables:
-            lista.append(variable.get())
-
-        actualizar = Noticia.update(titulo=lista[1], descripcion=lista[2]).where(
-            Noticia.id == lista[0]
-        )
-        actualizar.execute()
-
-        elobjeto.mostrar()
-
->>>>>>> bf276896fbc6234720c45429d24b38567b7abafa
 
 """
     def baja(self, mitreeview):
