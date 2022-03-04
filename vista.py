@@ -10,7 +10,7 @@ class Ventanita:
 
     def __init__(self, window):
         self.root = window
-        self.root.geometry("525x445+800+150")
+        self.root.geometry("525x445+600+200")
         self.tit = StringVar()
         self.des = StringVar()
 
@@ -128,7 +128,7 @@ class Ventanita:
         self.tree.grid(row=0, column=0, columnspan=4)
         self.tree.bind(
             "<<TreeviewSelect>>",
-            lambda event, a=self.tree, b=self.titulo, c=self.descripcion: self.objeto_base.item_elegido(
+            lambda event, a=self.tree, b=self.tit, c=self.des: self.objeto_base.item_elegido(
                 a, b, c
             ),
         )
