@@ -10,7 +10,7 @@ class Ventanita:
 
     def __init__(self, window):
         self.root = window
-        self.root.geometry("525x445+600+300")
+        self.root.geometry("725x445+600+300")
         self.tit = StringVar()
         self.des = StringVar()
 
