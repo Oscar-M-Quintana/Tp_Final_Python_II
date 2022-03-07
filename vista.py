@@ -10,7 +10,7 @@ class Ventanita:
 
     def __init__(self, window):
         self.root = window
-        self.root.geometry("525x445+600+200")
+        self.root.geometry("525x445+600+300")
         self.tit = StringVar()
         self.des = StringVar()
 
@@ -22,7 +22,7 @@ class Ventanita:
         self.objeto_base = Abmc()
         # Frame
         self.root.title("Tarea Poo")
-        self.frame1.config(width=1020, height=1020)
+        self.frame1.config(width=1320, height=1320)
         self.frame1.grid(row=10, column=0, columnspan=4)
 
         # Etiquetas
@@ -48,11 +48,12 @@ class Ventanita:
         )
         self.titulo.grid(row=1, column=0, sticky="w")
         self.descripcion.grid(row=2, column=0, sticky="w")
+        
         self.registros.grid(
-            row=3, column=0, columnspan=4, padx=1, pady=1, sticky="w" + "e"
+            row=3, column=0, columnspan=5, padx=1, pady=1, sticky="w" + "e"
         )
         self.temas.grid(
-            column=0, row=20, columnspan=4, padx=1, pady=1, sticky="w" + "e"
+            column=0, row=20, columnspan=5, padx=1, pady=1, sticky="w" + "e"
         )
 
         # Entradas
@@ -69,6 +70,7 @@ class Ventanita:
         self.frame_rojoizq.grid(column=0, row=21)
         self.frame_negro.grid(column=1, row=21)
         self.frame_rojoder.grid(column=2, row=21)
+        self.frame_rojoder.grid(column=3, row=21)
 
         # Botones
         self.boton_alta = Button(self.root, text="Alta", command=lambda: self.alta())
@@ -118,13 +120,15 @@ class Ventanita:
         self.boton_tema3.grid(column=2, row=23)
 
         # Tree
-        self.tree["columns"] = ("col1", "col2")
+        self.tree["columns"] = ("col1", "col2", "col3")
         self.tree.column("#0", width=90, minwidth=50, anchor="w")
         self.tree.column("col1", width=200, minwidth=80)
         self.tree.column("col2", width=200, minwidth=80)
+        self.tree.column("col3", width=300, minwidth=80)
         self.tree.heading("#0", text="ID")
         self.tree.heading("col1", text="Título")
         self.tree.heading("col2", text="Descripción")
+        self.tree.heading("col3", text="Detalle")
         self.tree.grid(row=0, column=0, columnspan=4)
         self.tree.bind(
             "<<TreeviewSelect>>",

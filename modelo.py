@@ -21,12 +21,15 @@ class Noticia(BaseModel):
     # id = IntegerField(unique=True)
     titulo = CharField(unique=True)
     descripcion = TextField()
-
+    
+    def __str__(self):
+        concatenar = self.titulo + ", " + self.descripcion
+        for i in self.descripcion:
+            concatenar = concatenar
+        return "Detalle: " + concatenar
 
 db.connect()
 db.create_tables([Noticia])
-
-
 class Abmc:
     """Clase para lograr el CRUD"""
 
@@ -44,7 +47,7 @@ class Abmc:
         for fila in Noticia.select():
             print(fila)
             mitreeview.insert(
-                "", 0, text=fila.id, values=(fila.titulo, fila.descripcion)
+                "", 0, text=fila.id, values=(fila.titulo, fila.descripcion, fila)
             )
 
     def cerrar_conexion(self):
