@@ -1,13 +1,9 @@
 from tkinter import Tk
 import vista
 
-from modelo import *
-
 
 class Controller:
-    """
-    Está es la clase principal
-    """
+    """Está es la clase principal."""
 
     def __init__(self, root):
         self.root_controler = root
